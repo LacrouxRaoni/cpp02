@@ -2,9 +2,8 @@
 
 int const Fixed::fractBits = 8;
 
-Fixed::Fixed()
+Fixed::Fixed() : fixedPoint(0)
 {
-	fixedPoint = 0;
 	std::cout << "Default constructor called" << std::endl;
 }
 
@@ -15,12 +14,23 @@ Fixed::Fixed(const Fixed& newFixed)
 }
 
 
-
 Fixed& Fixed::operator= (const Fixed &newFixed)
 {
 	std::cout << "Copy assigment operator called" << std::endl;
 	this->setRawBits(newFixed.getRawBits());
 	return *this;
+}
+
+Fixed::Fixed (const int i)
+{
+	std::cout << "Int constructor called" << std::endl;
+	fixedPoint = i << fractBits;
+}
+
+Fixed::Fixed (const float f)
+{
+	std::cout << "Float constructor called" << std::endl;
+	fixedPoint = roundf(f * (float)(1 << fractBits));
 }
 
 Fixed::~Fixed()
@@ -30,8 +40,7 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits( void ) const 
 {
-	std::cout << "getRawBits member function called" << std::endl;
-	return fixedPoint;
+	return this->fixedPoint;
 }
 
 void Fixed::setRawBits( int const raw )
@@ -39,3 +48,25 @@ void Fixed::setRawBits( int const raw )
 	fixedPoint = raw;
 }
 
+float Fixed::toFloat( void ) const
+{
+	float f;
+
+	f = ((float)getRawBits() / (float)(1 << fractBits));	
+	return f;
+}
+
+int Fixed::toInt( void ) const
+{
+	float i;
+
+	i = getRawBits() >> fractBits;
+	return i;
+}
+
+
+std::ostream& operator<<(std::ostream& output, const Fixed& fixed)
+{
+	output << fixed.toFloat();
+	return output;
+}
