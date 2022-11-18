@@ -4,7 +4,7 @@ int const Fixed::fractBits = 8;
 
 Fixed::Fixed()
 {
-	fixedPoint = 0;
+	raw = 0;
 	std::cout << "Default constructor called" << std::endl;
 }
 
@@ -29,11 +29,11 @@ Fixed::~Fixed()
 int Fixed::getRawBits( void ) const 
 {
 	std::cout << "getRawBits member function called" << std::endl;
-	return fixedPoint;
+	return raw;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	fixedPoint = raw;
+	this->raw = raw;
 }
 

@@ -2,7 +2,7 @@
 
 int const Fixed::fractBits = 8;
 
-Fixed::Fixed() : fixedPoint(0)
+Fixed::Fixed() : raw(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -16,13 +16,13 @@ Fixed::Fixed(const Fixed& newFixed)
 Fixed::Fixed (const int i)
 {
 	std::cout << "Int constructor called" << std::endl;
-	fixedPoint = i << fractBits;
+	raw = i << fractBits;
 }
 
 Fixed::Fixed (const float f)
 {
 	std::cout << "Float constructor called" << std::endl;
-	fixedPoint = roundf(f * (float)(1 << fractBits));
+	raw = roundf(f * (float)(1 << fractBits));
 }
 
 Fixed::~Fixed()
@@ -38,37 +38,37 @@ Fixed& Fixed::operator=(const Fixed &newFixed)
 }
 
 bool Fixed::operator>(const Fixed& fixed){
-	if (fixedPoint > fixed.getRawBits())
+	if (raw > fixed.getRawBits())
 		return true;
 	return false;
 }
 
 bool Fixed::operator<(const Fixed& fixed){
-	if (fixedPoint < fixed.getRawBits())
+	if (raw < fixed.getRawBits())
 		return true;
 	return false;
 }
 
 bool Fixed::operator>=(const Fixed& fixed){
-	if (fixedPoint >= fixed.getRawBits())
+	if (raw >= fixed.getRawBits())
 		return true;
 	return false;
 }
 
 bool Fixed::operator<=(const Fixed& fixed){
-	if (fixedPoint <= fixed.getRawBits())
+	if (raw <= fixed.getRawBits())
 		return true;
 	return false;
 }
 
 bool Fixed::operator==(const Fixed& fixed){
-	if (fixedPoint == fixed.getRawBits())
+	if (raw == fixed.getRawBits())
 		return true;
 	return false;
 }
 
 bool Fixed::operator!=(const Fixed& fixed){
-	if (fixedPoint != fixed.getRawBits())
+	if (raw != fixed.getRawBits())
 		return true;
 	return false;
 }
@@ -90,7 +90,7 @@ Fixed Fixed::operator/(const Fixed& fixed){
 }
 
 Fixed& Fixed::operator++(void){
-	this->fixedPoint += 1;
+	this->raw += 1;
 	return *this;
 }
 
@@ -101,7 +101,7 @@ Fixed Fixed::operator++(int){
 }
 
 Fixed& Fixed::operator--(void){
-	this->fixedPoint -= 1;
+	this->raw -= 1;
 	return *this;
 }
 
@@ -139,12 +139,12 @@ Fixed Fixed::max(const Fixed& a, const Fixed& b){
 
 int Fixed::getRawBits( void ) const 
 {
-	return this->fixedPoint;
+	return this->raw;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	fixedPoint = raw;
+	this->raw = raw;
 }
 
 float Fixed::toFloat( void ) const

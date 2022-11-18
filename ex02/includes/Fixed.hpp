@@ -8,7 +8,7 @@
 class Fixed
 {
 	private:
-		int fixedPoint;
+		int raw;
 		static const int fractBits;
 	public:
 		Fixed();

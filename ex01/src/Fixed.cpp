@@ -2,7 +2,7 @@
 
 int const Fixed::fractBits = 8;
 
-Fixed::Fixed() : fixedPoint(0)
+Fixed::Fixed() : raw(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -24,13 +24,13 @@ Fixed& Fixed::operator= (const Fixed &newFixed)
 Fixed::Fixed (const int i)
 {
 	std::cout << "Int constructor called" << std::endl;
-	fixedPoint = i << fractBits;
+	raw = i << fractBits;
 }
 
 Fixed::Fixed (const float f)
 {
 	std::cout << "Float constructor called" << std::endl;
-	fixedPoint = roundf(f * (float)(1 << fractBits));
+	raw = roundf(f * (float)(1 << fractBits));
 }
 
 Fixed::~Fixed()
@@ -40,12 +40,12 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits( void ) const 
 {
-	return this->fixedPoint;
+	return this->raw;
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	fixedPoint = raw;
+	this->raw = raw;
 }
 
 float Fixed::toFloat( void ) const
