@@ -11,32 +11,6 @@ int main( void )
 	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
-
-	std::cout << "Max: " << Fixed::max(a, b) << std::endl;
-	std::cout << "Max: " << Fixed::max( a, b ) << std::endl;
-	std::cout << "Min: " << Fixed::min( a, b ) << std::endl;
-	std::cout << "Min: " << Fixed::min( a, b ) << std::endl;
-	std::cout << ">= a: " << a.operator>=( a ) << std::endl;
-	std::cout << ">= b: " << a.operator>=( b ) << std::endl;
-	std::cout << "<= a: " << a.operator<=( a ) << std::endl;
-	std::cout << "<= b: " << a.operator<=( b ) << std::endl;
-	std::cout << "< a: " << a.operator<( a ) << std::endl;
-	std::cout << "< b: " << a.operator<( b ) << std::endl;
-	std::cout << "> a: " << a.operator>( a ) << std::endl;
-	std::cout << "> b: " << a.operator>( b ) << std::endl;
-	std::cout << "== a: " << a.operator==( a ) << std::endl;
-	std::cout << "== b: " << a.operator==( b ) << std::endl;	
-	std::cout << "!= a: " << a.operator!=( a ) << std::endl;
-	std::cout << "!= b: " << a.operator!=( b ) << std::endl;
-	std::cout << "+ a: " << a.operator+( a ) << std::endl;
-	std::cout << "+ b: " << a.operator+( b ) << std::endl;
-	std::cout << "- a: " << a.operator-( a ) << std::endl;
-	std::cout << "- b : " << a.operator-( b ) << std::endl;
-	std::cout << "++: " << a.operator++() << std::endl;
-	std::cout << "--: " << a.operator--() << std::endl;
-	std::cout << "* a: " << a << a.operator*( a ) << std::endl;
-	std::cout << "* b: " << a.operator*( b ) << std::endl;
-	std::cout << "/ a: " << a.operator/( a ) << std::endl;
-	std::cout << "/ b: " << a.operator/( b ) << std::endl;	
+	std::cout << b << std::endl;
 	return 0;
 }

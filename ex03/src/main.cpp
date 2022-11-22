@@ -2,28 +2,52 @@
 
 bool bsp( Point const a, Point const b, Point const c, Point const point);
 
+static void isInTest(Point a, Point b, Point c)
+{
+	Point	point(3, 3);
+	bool	ret = bsp(a, b, c, point);
+	if (ret == true){
+		std::cout << "point is in: " << point.getX() << ", " << point.getY() << std::endl;
+		std::cout << "a pos: " << a.getX() << ", " << a.getY() << std::endl;
+		std::cout << "b pos: " << b.getX() << ", " << b.getY() << std::endl;
+		std::cout << "c pos: " << c.getX() << ", " << c.getY() << std::endl;
+		std::cout << "It is in" << std::endl;
+	} else {
+		std::cout << "point is out: " << point.getX() << ", " << point.getY() << std::endl;
+		std::cout << "a pos: " << a.getX() << ", " << a.getY() << std::endl;
+		std::cout << "b pos: " << b.getX() << ", " << b.getY() << std::endl;
+		std::cout << "c pos: " << c.getX() << ", " << c.getY() << std::endl;
+		std::cout << "It is out" << std::endl;
+	}
+}
+
+static void isOutTest(Point a, Point b, Point c)
+{
+	Point point(4, 8);
+	bool ret = bsp(a, b, c, point);
+
+	if (ret == true)
+	{
+		std::cout << "point is in: " << point.getX() << ", " << point.getY() << std::endl;
+		std::cout << "a pos: " << a.getX() << ", " << a.getY() << std::endl;
+		std::cout << "b pos: " << b.getX() << ", " << b.getY() << std::endl;
+		std::cout << "c pos: " << c.getX() << ", " << c.getY() << std::endl;
+	} else {
+		std::cout << "point is in: " << point.getX() << ", " << point.getY() << std::endl;
+		std::cout << "a pos: " << a.getX() << ", " << a.getY() << std::endl;
+		std::cout << "b pos: " << b.getX() << ", " << b.getY() << std::endl;
+		std::cout << "c pos: " << c.getX() << ", " << c.getY() << std::endl;
+		std::cout << "It is out" << std::endl;
+	}
+}
+
 int main( void ) 
 {
-	Point a(0, 0);
-	Point b(4, 0);
+	Point a(1, 2);
+	Point b(4, 3);
 	Point c(4, 6);
-	Point pointIn(4, 1);
-	Point pointOut(4, 8);
-	bool ret;
 
-	//It is in test
-	ret = bsp(a, b, c, pointIn);
-	if (ret == true){
-		std::cout << "It is in" << std::endl;
-	} else {
-		std::cout << "It is out" << std::endl;
-	}
-	//It is out test
-	ret = bsp(a, b, c, pointOut);
-	if (ret == true){
-		std::cout << "It is in" << std::endl;
-	} else {
-		std::cout << "It is out" << std::endl;
-	}
+	isInTest(a, b, c);
+	isOutTest(a, b, c);
 	return 0;
 }
